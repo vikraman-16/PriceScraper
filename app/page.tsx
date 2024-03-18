@@ -33,10 +33,10 @@ const Home = async () => {
             <Searchbar />
           </div>
 
-
           <Herocarousel />
         </div>
       </section>
+
       <section className="trending-section">
         <h2 className="section-text">Tending</h2>
         <div className="flex flex-wrap gap-x-8 gap-y-16">
