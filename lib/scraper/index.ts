@@ -25,8 +25,10 @@ export async function scrapeAmazonProduct(url: string) {
     try {
         // Fetch the product page
         const response = await axios.get(url, options);
-        const $ = cheerio.load(response.data);
 
+        // console.log("response======>",response.data)
+        const $ = cheerio.load(response.data);
+        
         // Extract the product title
         const title = $('#productTitle').text().trim();
         const currentPrice = extractPrice(
@@ -71,11 +73,11 @@ export async function scrapeAmazonProduct(url: string) {
             category: 'category',
             reviewsCount: 100,
             stars: 4.5,
-            isOutOFStock: outOfStock,
+            isOutOStock: outOfStock,
             description,
             lowestPrice: Number(currentPrice) || Number(originalPrice),
             highestPrice: Number(originalPrice) || Number(currentPrice),
-            average: Number(currentPrice) || Number(originalPrice),
+            averagePrice: Number(currentPrice) || Number(originalPrice),
         }
 
         return data;
