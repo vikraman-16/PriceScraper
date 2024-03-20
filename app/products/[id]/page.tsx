@@ -20,6 +20,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
     if (!product) redirect('/');
 
+    // console.log(product);
+
     const similarProducts = await getSimilarProducts(id);
 
     return (
@@ -93,7 +95,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                                         height={16}
                                     />
                                     <p className="text-sm text-primary-orange font-semibold">
-                                        {product.stars || '25'}
+                                        {product.stars}
+
                                     </p>
                                 </div>
 
