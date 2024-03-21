@@ -63,6 +63,8 @@ export async function scrapeAmazonProduct(url: string) {
         const description = extractDescription($)
         // const stars = $('#acrPopover > span.a-size-base.a-color-base')
         const stars = $('#acrPopover').attr()?.title.split(" ")[0];
+
+        const reviewsCount = $('span#acrCustomerReviewText.a-size-base').text().trim().split(" ")[0];
         
         const data = {
             url,
@@ -74,7 +76,7 @@ export async function scrapeAmazonProduct(url: string) {
             priceHistory: [],
             discountRate: Number(discountRate),
             category: 'category',
-            reviewsCount: 100,
+            reviewsCount: Number(reviewsCount),
             stars: Number(stars),
             isOutOfStock: outOfStock,
             description,
@@ -82,7 +84,9 @@ export async function scrapeAmazonProduct(url: string) {
             highestPrice: Number(originalPrice) || Number(currentPrice),
             averagePrice: Number(currentPrice) || Number(originalPrice),
         }
-        console.log(stars);
+
+        console.log(reviewsCount);
+        
 
         return data;
         
